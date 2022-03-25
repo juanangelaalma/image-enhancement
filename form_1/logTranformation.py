@@ -3,17 +3,17 @@
 import cv2 as cv
 import numpy as np
 
-originalImage = cv.imread("../images/tree.png")
+original_image = cv.imread("../images/tree.png")
 
 # method of log tranformation
-c = 255 / np.log(1 + np.max(originalImage))
-logImage = c * np.log(originalImage + 1)
+c = 255 / np.log(1 + np.max(original_image))
+log_image = c * np.log(original_image + 1)
 
 # float value will be convert to int 
-logImage = np.array(logImage, dtype = np.uint8)
+log_image = np.array(log_image, dtype = np.uint8)
 
-cv.imshow("grayscale image", originalImage)
+cv.imshow("grayscale image", original_image)
 
-cv.imshow("log image", logImage)
+cv.imshow("log image", log_image)
 
 cv.waitKey(0)

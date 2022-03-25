@@ -1,11 +1,11 @@
 import cv2 as cv
 
-originalImage = cv.imread('../images/tree.png')
+original_image = cv.imread('../images/tree.png')
 
-negativeImage = 255 - originalImage
+negative_image = 255 - original_image
 
-cv.imshow("grayscale image", originalImage)
+cv.imshow("grayscale image", original_image)
 
-cv.imshow("negative image", negativeImage)
+cv.imshow("negative image", negative_image)
 
 cv.waitKey(0)
