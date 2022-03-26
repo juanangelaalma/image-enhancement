@@ -11,19 +11,20 @@ import numpy as np
 
 original_image = cv.imread("../images/tree.png")
 
-grayscale_image = cv.cvtColor(original_image, cv.COLOR_BGR2GRAY)
-
-min_pixel = np.min(grayscale_image)
-max_pixel = np.max(grayscale_image)
+min_pixel = np.min(original_image)
+max_pixel = np.max(original_image)
 b = 255
 a = 0
 
-contrast_image = (grayscale_image - min_pixel) * ( (b - a) / (max_pixel - min_pixel) ) + a
+contrast_image = original_image.copy()
 
-# float value will be convert to int 
-contrast_image = np.array(contrast_image, dtype = np.uint8)
+for i in range(original_image.shape[0]):
+  for j in range(original_image.shape[1]):
+    r, g, b = original_image[i][j]
+    contrast_image[i][j] = (original_image[i][j] - min_pixel) * ( (b - a) / (max_pixel - min_pixel) ) + a
 
-cv.imshow("original image", grayscale_image)
+
+cv.imshow("original image", original_image)
 cv.imshow("contrast image", contrast_image)
 
 cv.waitKey(0)

@@ -6,17 +6,19 @@
 import cv2 as cv
 import numpy as np
 
-original_image = cv.imread("../images/birds.jpg")
-gray_scale_image = cv.cvtColor(original_image, cv.COLOR_BGR2GRAY)
+original_image = cv.imread("../images/lovebird.jpg")
+
+powerlaw_image = original_image.copy()
 
 c = 1
-y = 1.1
+y = 0.8
 
 # s = cr^y
-powerlaw_image = (c * original_image) ** y
+for i in range(original_image.shape[0]):
+  for j in range(original_image.shape[1]):
+    r, g, b = original_image[i][j]
+    powerlaw_image[i][j] = c * (powerlaw_image[i][j]**y)
 
-# float value will be convert to int 
-powerlaw_image = np.array(powerlaw_image, dtype = np.uint8)
-
+cv.imshow("original image", original_image)
 cv.imshow("power law image", powerlaw_image)
 cv.waitKey(0)
