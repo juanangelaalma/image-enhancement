@@ -16,6 +16,6 @@ print(log_image)
 
 cv.imshow("grayscale image", original_image)
 
-cv.imshow("log image", log_image)cd ..
+cv.imshow("log image", log_image)
 
 cv.waitKey(0)
